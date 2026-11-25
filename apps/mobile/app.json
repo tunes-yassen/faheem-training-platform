@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "منصة فهيم للتدريب",
+    "slug": "faheem-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "faheem",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#F8FAFC",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "sa.faheem.mobile",
+      "infoPlist": {
+        "CFBundleDevelopmentRegion": "ar",
+        "CFBundleLocalizations": ["ar"]
+      }
+    },
+    "android": {
+      "package": "sa.faheem.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#0D9488"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "supportsRTL": true,
+      "defaultLocale": "ar",
+      "apiBaseUrl": "http://localhost:4000/api/v1"
+    }
+  }
+}

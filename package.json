@@ -1,0 +1,18 @@
+{
+  "name": "faheem-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Faheem Training Platform (منصة فهيم للتدريب) — Monorepo",
+  "scripts": {
+    "dev:api": "npm --prefix apps/api run start:dev",
+    "build:api": "npm --prefix apps/api run build",
+    "test:api": "npm --prefix apps/api test",
+    "db:up": "docker compose up -d postgres redis",
+    "db:down": "docker compose down",
+    "db:push": "npm --prefix apps/api run prisma:push",
+    "db:seed": "npm --prefix apps/api run prisma:seed",
+    "dev:web": "npm --prefix apps/web run dev",
+    "dev:admin": "npm --prefix apps/admin run dev",
+    "dev:mobile": "npm --prefix apps/mobile run start"
+  }
+}

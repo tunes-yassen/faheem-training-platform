@@ -1,0 +1,27 @@
+import { createParamDecorator, ExecutionContext, SetMetadata } from '@nestjs/common';
+
+export const IS_PUBLIC_KEY = 'isPublic';
+export const Public = () => SetMetadata(IS_PUBLIC_KEY, true);
+
+export const ROLES_KEY = 'roles';
+export const Roles = (...roles: string[]) => SetMetadata(ROLES_KEY, roles);
+
+export const PERMISSIONS_KEY = 'permissions';
+export const RequirePermissions = (...permissions: string[]) =>
+  SetMetadata(PERMISSIONS_KEY, permissions);
+
+export interface AuthenticatedUser {
+  id: string;
+  email: string | null;
+  phone: string | null;
+  roleCode: string;
+  permissions: string[];
+  isTutorApproved: boolean;
+}
+
+export const CurrentUser = createParamDecorator(
+  (_data: unknown, ctx: ExecutionContext): AuthenticatedUser => {
+    const request = ctx.switchToHttp().getRequest();
+    return request.user;
+  },
+);
