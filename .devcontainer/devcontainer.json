@@ -1,0 +1,15 @@
+{
+  "name": "Faheem Training Platform (Cloud Server)",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [3000, 3001, 4000, 5432],
+  "portsAttributes": {
+    "3000": { "label": "Faheem Web & Portals", "onAutoForward": "openBrowser", "visibility": "public" },
+    "3001": { "label": "Faheem Super Admin", "onAutoForward": "openBrowser", "visibility": "public" },
+    "4000": { "label": "Faheem API & Swagger", "onAutoForward": "notify", "visibility": "public" }
+  },
+  "postCreateCommand": "cd apps/api && npm install && cd ../web && npm install && cd ../admin && npm install",
+  "postStartCommand": "docker compose up -d postgres && (cd apps/api && npx prisma db push && npm run prisma:seed || true)"
+}
